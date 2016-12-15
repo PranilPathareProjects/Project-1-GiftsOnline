@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+https://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="shippingAddressModel" class="com.niit.giftsonline.model.ShippingAddressModel"></var>
+	<var name="billingAddressModel" class="com.niit.giftsonline.model.BillingAddressModel"></var>
+	<var name="orderModel" class="com.niit.giftsonline.model.OrderModel"></var>
+	<var name="paymentMethodModel" class="com.niit.giftsonline.model.PaymentMethodModel"></var>
+	
+	<on-start>
+		<evaluate expression="orderWebflow.initFlow()" result="flowScope.orderModel"/>
+	</on-start>
+	
+	<view-state id="flowExecutor" view="webflow/shippingAddress" model="shippingAddressModel">
+		<transition on="submitShippingAddress" to="shippingDetails"/>
+	</view-state>
+	
+	<action-state id="shippingDetails">
+		<evaluate expression="orderWebflow.addShippingAddress(flowScope.orderModel,shippingAddressModel)"></evaluate>
+		<transition on="success" to="enterBillingAddress"/>
+	</action-state>
+	
+	<view-state id="enterBillingAddress" view="webflow/billingAddress" model="billingAddressModel">
+		<transition on="submitBillingAddress" to="billingDetails"/>
+	</view-state>
+	
+	<action-state id="billingDetails">
+		<evaluate expression="orderWebflow.addBillingAddress(flowScope.orderModel,billingAddressModel)"></evaluate>
+		<transition on="success" to="viewPaymentMethod"/>
+	</action-state>
+	
+	<view-state id="viewPaymentMethod" view="webflow/paymentMethod" model="paymentMethodModel">
+		<transition on="submitPaymentMethod" to="paymentDetails"/>
+	</view-state>
+	
+	<action-state id="paymentDetails">
+		<evaluate expression="orderWebflow.addPaymentMethod(flowScope.orderModel,paymentMethodModel)"></evaluate>
+		<transition on="success" to="confirmOrder"/>
+	</action-state>
+	
+	<view-state id="confirmOrder" view="webflow/orderConfirmed">
+		<transition on="finalHome" to="toHome"/>
+	</view-state>
+	
+	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	
+	<global-transitions>
+		<transition on="back" to="checkout"/>
+	</global-transitions>
+</flow>
