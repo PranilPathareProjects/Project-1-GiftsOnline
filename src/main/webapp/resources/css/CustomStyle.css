@@ -287,3 +287,11 @@ i:hover
     display: block;
   	max-width: 100%;
 }
+
+.img-responsive-about {
+	height: 200px;
+	width: 300px;
+    margin: 0 auto;
+    display: block;
+  	max-width: 100%;
+}

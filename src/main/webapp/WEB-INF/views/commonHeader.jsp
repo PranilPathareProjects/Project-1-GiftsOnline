@@ -64,6 +64,10 @@
 		repeatapp.controller("cartDisplayController", function($scope) {
 			$scope.carts = carts;
 		});
+		
+		repeatapp.controller("orderDisplayController", function($scope) {
+			$scope.orderlist = orderlist;
+		});
 	</script>
 </head>
 <body ng-app="repeatApp">

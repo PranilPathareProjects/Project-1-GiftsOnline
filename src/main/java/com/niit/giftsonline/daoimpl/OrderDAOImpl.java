@@ -2,10 +2,13 @@ package com.niit.giftsonline.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.id.UUIDGenerationStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +98,28 @@ public class OrderDAOImpl implements OrderDAO {
 		List liaorders = session.createQuery("From OrderModel").list();
 		Gson gson = new Gson();
 		String jsonlist = gson.toJson(liaorders);
+		tran.commit();
+		session.close();
+		return jsonlist;
+	}
+	
+	@Override
+	public String retriveAllOrdersByUsername(String username) {
+		Session session = sessionFactory.openSession();
+		Transaction tran = session.beginTransaction();
+		String jsonlist;
+		Criteria criteria = session.createCriteria(OrderModel.class);
+		criteria.add(Restrictions.eq("username", username));
+		List liaorders = criteria.list();
+		if(liaorders.size()==0)
+		{
+			jsonlist = null;
+		}
+		else
+		{	
+			Gson gson = new Gson();
+			jsonlist = gson.toJson(liaorders);
+		}
 		tran.commit();
 		session.close();
 		return jsonlist;

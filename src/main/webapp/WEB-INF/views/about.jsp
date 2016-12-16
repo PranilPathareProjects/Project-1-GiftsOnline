@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-lg-6">
-				<img src="resources/images/GiftsOnlineLogo.png" height="200px" width="300px"/>
+				<img src="resources/images/GiftsOnlineLogo.png" class="img-responsive-about"/>
 			</div>
 			<div class="col-md-6 col-lg-6">
 				<h2>About GiftsOnline</h2> 

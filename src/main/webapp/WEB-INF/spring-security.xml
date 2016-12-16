@@ -19,6 +19,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/cart" access="hasRole('ROLE_USER')" />	
 		<security:intercept-url pattern="/addtocart" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/trackorder" access="hasRole('ROLE_USER')" />
 		<security:form-login login-page="/login" default-target-url="/" login-processing-url="/perform_login" authentication-failure-url="/loginerror" username-parameter="username" password-parameter="password" authentication-success-forward-url="/validatelogin"/>
 		<security:access-denied-handler error-page="/accessdenied"/>		
 		<security:csrf disabled="true" />

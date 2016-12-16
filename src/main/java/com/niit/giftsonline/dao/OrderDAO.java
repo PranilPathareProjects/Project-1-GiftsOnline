@@ -7,4 +7,5 @@ public interface OrderDAO {
 	String generateID();
 	long getTotalNumberOfOrders();
 	String retriveAllOrders();
+	String retriveAllOrdersByUsername(String username);
 }

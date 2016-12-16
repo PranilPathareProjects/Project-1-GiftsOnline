@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.giftsonline.dao.CartDAO;
 import com.niit.giftsonline.dao.CategoryDAO;
+import com.niit.giftsonline.dao.OrderDAO;
 import com.niit.giftsonline.dao.ProductDAO;
 import com.niit.giftsonline.model.UserModel;
 
@@ -30,7 +31,10 @@ public class HomeController {
 	
 	@Autowired
 	CartDAO cartdao;
-		
+
+	@Autowired
+	OrderDAO orderdao;
+	
 	@RequestMapping("/")
 	public ModelAndView index(HttpSession session) /**/
 	{
@@ -145,7 +149,19 @@ public class HomeController {
 	public ModelAndView trackOrder()
 	{
 		logger.debug("Start of trackOrder method");
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		ModelAndView mav = new ModelAndView("trackOrder", "user", new UserModel());
+		String orderlist = orderdao.retriveAllOrdersByUsername(username);
+		
+		if(orderlist==null)
+		{
+			mav.addObject("OrderNotPlaced", true);
+		}
+		else
+		{
+			mav.addObject("OrderNotPlaced", false);
+			mav.addObject("orderlistbyuser", orderlist);
+		}
 		logger.debug("End of trackOrder method");
 		return mav;	
 	}
