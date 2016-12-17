@@ -13,9 +13,25 @@
 		<p>Please choose the order no.:</p>
 		<select ng-options="order.order_id for order in orderlist" ng-model="selectedOrder">
 		</select>
-		{{selectedOrder.date_of_addition}}
-		{{selectedOrder.date_processed}}
-		{{selectedOrder.date_delivered}}
+		<br>
+		<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Date Ordered</th>
+					<th>Date Processed</th>
+					<th>Date Delivered</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td ng-init="selectedOrder.date_of_addition = Date" ng-bind="formatDate(selectedOrder.date_of_addition) | date: 'dd/MM/yyyy'"></td>
+					<td ng-bind="formatDate(selectedOrder.date_processed) | date: 'dd/MM/yyyy'"></td>
+					<td ng-bind="formatDate(selectedOrder.date_delivered) | date: 'dd/MM/yyyy'"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
 	</div>	
 	</c:otherwise>
 	</c:choose>

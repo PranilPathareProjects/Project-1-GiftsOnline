@@ -3,7 +3,11 @@
 <script>
 	var orderslist = ${orders};
 	angular.module("orderApp", ['angularUtils.directives.dirPagination']).controller("orderController", function($scope) {
-		$scope.allorders = orderslist;});
+		$scope.allorders = orderslist;
+		
+		$scope.updatethedate = function() {}
+	
+	});
 </script>
 <div ng-app="orderApp" class="container">
 	<div ng-controller="orderController">

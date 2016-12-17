@@ -67,6 +67,13 @@
 		
 		repeatapp.controller("orderDisplayController", function($scope) {
 			$scope.orderlist = orderlist;
+			
+			$scope.Date = new Date();
+			
+			$scope.formatDate = function(date){
+		          var dateOut = new Date(date);
+		          return dateOut;
+		    };
 		});
 	</script>
 </head>
