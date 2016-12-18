@@ -1,5 +1,9 @@
 package com.niit.giftsonline.daoimpl;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -123,5 +127,18 @@ public class OrderDAOImpl implements OrderDAO {
 		tran.commit();
 		session.close();
 		return jsonlist;
+	}
+	
+	@Override
+	public void updateOrderDate(String id) {
+		Session session = sessionFactory.openSession();
+		Transaction tran = session.beginTransaction();
+		OrderModel orderobj = (OrderModel) session.get(OrderModel.class, id);
+		java.util.Date utilDate = new java.util.Date();
+		Date date = new Date(utilDate.getTime());
+		orderobj.setDate_processed(date);
+		session.update(orderobj);
+		tran.commit();
+		session.close();
 	}
 }

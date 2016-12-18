@@ -25,7 +25,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td ng-init="selectedOrder.date_of_addition = Date" ng-bind="formatDate(selectedOrder.date_of_addition) | date: 'dd/MM/yyyy'"></td>
+					<td ng-bind="formatDate(selectedOrder.date_of_addition) | date: 'dd/MM/yyyy'"></td>
 					<td ng-bind="formatDate(selectedOrder.date_processed) | date: 'dd/MM/yyyy'"></td>
 					<td ng-bind="formatDate(selectedOrder.date_delivered) | date: 'dd/MM/yyyy'"></td>
 				</tr>

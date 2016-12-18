@@ -5,7 +5,9 @@
 	angular.module("orderApp", ['angularUtils.directives.dirPagination']).controller("orderController", function($scope) {
 		$scope.allorders = orderslist;
 		
-		$scope.updatethedate = function() {}
+		$scope.updatethedate = function() {
+			
+		}
 	
 	});
 </script>
@@ -29,7 +31,7 @@
 					<tr dir-paginate="order in allorders | orderBy: 'order_id' | itemsPerPage: 5">
 						<td>{{order.order_id}}</td>
 						<td>{{order.date_of_addition}}</td>
-						<td>{{order.date_processed}}</td>
+						<td>{{order.date_processed}} <a href="setdate?id={{order.order_id}}" class="btn btn-xs btn-success">Set</a> <a href="" class="btn btn-xs btn-danger">Reset</a></td>
 						<td>{{order.date_delivered}}</td>
 						<td>{{order.paymentmethodmodel.paymentmethod}}</td>
 						<td>{{order.total_price}}</td>

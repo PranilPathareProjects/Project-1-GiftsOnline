@@ -8,4 +8,5 @@ public interface OrderDAO {
 	long getTotalNumberOfOrders();
 	String retriveAllOrders();
 	String retriveAllOrdersByUsername(String username);
+	void updateOrderDate(String id);
 }
