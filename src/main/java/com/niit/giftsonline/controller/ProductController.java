@@ -65,8 +65,8 @@ public class ProductController {
 	{
 		prodmodel.setProduct_status("Enabled");
 		pdao.addProduct(prodmodel);
-		
-		String path="E:\\Pranil Pathare\\Project_1_GiftsOnline\\GiftsOnline\\src\\main\\webapp\\resources\\product_images\\";
+		//E:\Pranil Pathare\Project_1_GiftsOnline\GiftsOnline4\src\main\webapp\resources\product_images
+		String path="E:\\Pranil Pathare\\Project_1_GiftsOnline\\GiftsOnline4\\src\\main\\webapp\\resources\\product_images\\";
 		path=path+String.valueOf(prodmodel.getProduct_id())+".jpg";
 		File f=new File(path);
 		MultipartFile multifile=prodmodel.getProduct_image();
@@ -147,7 +147,7 @@ public class ProductController {
 		prodmod.setProduct_status("Enabled");
 		pdao.updateProduct(prodmod);
 		
-		String path="E:\\Pranil Pathare\\Project_1_GiftsOnline\\GiftsOnline\\src\\main\\webapp\\resources\\product_images\\";
+		String path="E:\\Pranil Pathare\\Project_1_GiftsOnline\\GiftsOnline4\\src\\main\\webapp\\resources\\product_images\\";
 		path=path+String.valueOf(prodmod.getProduct_id())+".jpg";
 		File f=new File(path);
 		MultipartFile multifile=prodmod.getProduct_image();

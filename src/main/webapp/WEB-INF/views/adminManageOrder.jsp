@@ -31,8 +31,8 @@
 					<tr dir-paginate="order in allorders | orderBy: 'order_id' | itemsPerPage: 5">
 						<td>{{order.order_id}}</td>
 						<td>{{order.date_of_addition}}</td>
-						<td>{{order.date_processed}} <a href="setdate?id={{order.order_id}}" class="btn btn-xs btn-success">Set</a> <a href="" class="btn btn-xs btn-danger">Reset</a></td>
-						<td>{{order.date_delivered}}</td>
+						<td>{{order.date_processed}} <a href="setdate?id={{order.order_id}}&datefor=Processed" class="btn btn-xs btn-success">Set</a> <a href="resetdate?id={{order.order_id}}&datefor=Processed" class="btn btn-xs btn-danger">Reset</a></td>
+						<td>{{order.date_delivered}} <a href="setdate?id={{order.order_id}}&datefor=Delivered" class="btn btn-xs btn-success">Set</a> <a href="resetdate?id={{order.order_id}}&datefor=Delivered" class="btn btn-xs btn-danger">Reset</a></td>
 						<td>{{order.paymentmethodmodel.paymentmethod}}</td>
 						<td>{{order.total_price}}</td>
 						<td>{{order.username}}</td>

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.google.gson.Gson;
-import com.niit.giftsonline.controller.HomeController;
 import com.niit.giftsonline.dao.ProductDAO;
 import com.niit.giftsonline.model.ProductModel;
 

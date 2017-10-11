@@ -1,8 +1,5 @@
 package com.niit.giftsonline.webflow;
 
-import java.awt.PageAttributes.OrientationRequestedType;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.niit.giftsonline.dao.OrderDAO;
 import com.niit.giftsonline.model.BillingAddressModel;
-import com.niit.giftsonline.model.CartModel;
 import com.niit.giftsonline.model.OrderModel;
 import com.niit.giftsonline.model.PaymentMethodModel;
 import com.niit.giftsonline.model.ShippingAddressModel;

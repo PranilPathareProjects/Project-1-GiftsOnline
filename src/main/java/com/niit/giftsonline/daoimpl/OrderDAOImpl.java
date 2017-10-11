@@ -130,15 +130,55 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 	
 	@Override
-	public void updateOrderDate(String id) {
+	public void updateOrderProcessedDate(String id) {
 		Session session = sessionFactory.openSession();
 		Transaction tran = session.beginTransaction();
 		OrderModel orderobj = (OrderModel) session.get(OrderModel.class, id);
 		java.util.Date utilDate = new java.util.Date();
 		Date date = new Date(utilDate.getTime());
 		orderobj.setDate_processed(date);
+		orderobj.setOrder_status("In Process");
 		session.update(orderobj);
 		tran.commit();
 		session.close();
 	}
+
+	@Override
+	public void updateOrderDeliveredDate(String id) {
+		Session session = sessionFactory.openSession();
+		Transaction tran = session.beginTransaction();
+		OrderModel orderobj = (OrderModel) session.get(OrderModel.class, id);
+		java.util.Date utilDate = new java.util.Date();
+		Date date = new Date(utilDate.getTime());
+		orderobj.setDate_delivered(date);
+		orderobj.setOrder_status("Delivered");
+		session.update(orderobj);
+		tran.commit();
+		session.close();	
+	}
+	
+	@Override
+	public void resetDeliveredDate(String id) {
+		Session session = sessionFactory.openSession();
+		Transaction tran = session.beginTransaction();
+		OrderModel orderobj = (OrderModel) session.get(OrderModel.class, id);
+		orderobj.setDate_delivered(null);
+		orderobj.setOrder_status("In Process");
+		session.update(orderobj);
+		tran.commit();
+		session.close();	
+	}
+	
+	@Override
+	public void resetProcessedDate(String id) {
+		Session session = sessionFactory.openSession();
+		Transaction tran = session.beginTransaction();
+		OrderModel orderobj = (OrderModel) session.get(OrderModel.class, id);
+		orderobj.setDate_processed(null);
+		orderobj.setOrder_status("Pending");
+		session.update(orderobj);
+		tran.commit();
+		session.close();	
+	}
+
 }
